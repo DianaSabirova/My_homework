@@ -21,7 +21,7 @@ def tresaurus(*args): # мы не знаем кол-во имен(аргумен
         else:
             names_dict[letter] = [name] # в других случаях, ключем будет первая буква имени, а значением одно имя
     return names_dict
-print(tresaurus(*str(input("Введите имена: ")).split(",")))
+print(tresaurus(*str(input("Введите имена: ")).split(" ")))
 
 
 
