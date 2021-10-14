@@ -10,18 +10,11 @@
 # и хранить данные о вложенных папках и файлах (добавлять детали))?
 
 import os
-dir_name = os.path.join("my_project", "settings")
-if not os.path.exists(dir_name):
-    os.makedirs(dir_name)
+correct_list = {"my_project": [{"settings" : []}, {"mainapp": []}, {"adminapp": []}, {"authapp":[]}]}
+# Создадим словарь в котором ключём является корневая папка, а значениями будет список подпапок заключенных в словарь
+for key, value in correct_list.items(): # применяем метод items тобы разбить ключ и значения отдельно
+    if not os.path.exists(key): # если ключа "my_project" нет в директории, то создать папку
+        for v in value: # для каждого элемента в корневом значении [{"settings" : []}, {"mainapp": []}, {"adminapp": []}, {"authapp":[]}]}
+            for i in v.keys(): # для каждого элемента из корневого значения выделить ключ
+                os.makedirs(os.path.join(key, i)) # с помощью метода join папка "my_project" обьединяется с подпапками и создается единый путь
 
-dir_name_one = os.path.join("my_project", "mainapp")
-if not os.path.exists(dir_name_one):
-    os.makedirs(dir_name_one)
-
-dir_name_two = os.path.join("my_project", "adminapp")
-if not os.path.exists(dir_name_two):
-    os.makedirs(dir_name_two)
-
-dir_name_three = os.path.join("my_project", "authapp")
-if not os.path.exists(dir_name_three):
-    os.makedirs(dir_name_three)
